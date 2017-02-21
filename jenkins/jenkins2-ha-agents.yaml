@@ -99,11 +99,11 @@ Parameters:
   AgentInstanceType:
     Description: 'The instance type of the Jenkins agents.'
     Type: String
-    Default: 't2.micro'
+    Default: 't2.xlarge'
   AgentVolumeSize:
     Description: 'The volume size, in Gibibytes (GiB).'
     Type: Number
-    Default: 8
+    Default: 20
     ConstraintDescription: 'Must be in the range [8-1024]'
     MinValue: 8
     MaxValue: 1024
@@ -128,7 +128,7 @@ Parameters:
   AgentMaxBuildWaitTimeInSeconds:
     Description: 'Maximum time in seconds an agent can continue with a build although it should be scaled down.'
     Type: Number
-    Default: 600
+    Default: 7200
     ConstraintDescription: 'Must be in the range [600-7200]'
     MinValue: 600
     MaxValue: 7200
