@@ -357,6 +357,26 @@ Resources:
             - 'sts:AssumeRole'
             Resource:
             - '*'
+      - PolicyName: codecommit
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - 'codecommit:BatchGetRepositories'
+            - 'codecommit:GetBlob'
+            - 'codecommit:GetBranch'
+            - 'codecommit:GetObjectIdentifier'
+            - 'codecommit:GetRepository'
+            - 'codecommit:GetTree'
+            - 'codecommit:GitPull'
+            - 'codecommit:ListBranches'
+            - 'codecommit:ListRepositories'
+            - 'codecommit:GetRepositoryTriggers'
+            - 'codecommit:PutRepositoryTriggers'
+            - 'codecommit:TestRepositoryTriggers'
+            Resource:
+            - !Sub 'arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:a33-*'
   MasterIAMPolicySSHAccess:
     Type: 'AWS::IAM::Policy'
     Condition: HasIAMUserSSHAccess
@@ -839,7 +859,7 @@ Resources:
               mode: '000600'
               owner: root
               group: root
-            '/var/lib/jenkins/.gitconfig'
+            '/var/lib/jenkins/.gitconfig':
               content: !Sub |
                 [credential]
                 	helper = !aws codecommit credential-helper $@
@@ -1012,6 +1032,26 @@ Resources:
             - 'sts:AssumeRole'
             Resource:
             - '*'
+      - PolicyName: codecommit
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - 'codecommit:BatchGetRepositories'
+            - 'codecommit:GetBlob'
+            - 'codecommit:GetBranch'
+            - 'codecommit:GetObjectIdentifier'
+            - 'codecommit:GetRepository'
+            - 'codecommit:GetTree'
+            - 'codecommit:GitPull'
+            - 'codecommit:ListBranches'
+            - 'codecommit:ListRepositories'
+            - 'codecommit:GetRepositoryTriggers'
+            - 'codecommit:PutRepositoryTriggers'
+            - 'codecommit:TestRepositoryTriggers'
+            Resource:
+            - !Sub 'arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:a33-*'
   AgentIAMPolicySSHAccess:
     Type: 'AWS::IAM::Policy'
     Condition: HasIAMUserSSHAccess
