@@ -377,6 +377,15 @@ Resources:
             - 'codecommit:TestRepositoryTriggers'
             Resource:
             - !Sub 'arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:a33-*'
+      - PolicyName: s3code
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - 's3:GetObject'
+            Resource:
+            - !Sub 'arn:aws:s3:::helloegg-fw-android/*'
   MasterIAMPolicySSHAccess:
     Type: 'AWS::IAM::Policy'
     Condition: HasIAMUserSSHAccess
@@ -1052,6 +1061,15 @@ Resources:
             - 'codecommit:TestRepositoryTriggers'
             Resource:
             - !Sub 'arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:a33-*'
+      - PolicyName: s3code
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - 's3:GetObject'
+            Resource:
+            - !Sub 'arn:aws:s3:::helloegg-fw-android/*'
   AgentIAMPolicySSHAccess:
     Type: 'AWS::IAM::Policy'
     Condition: HasIAMUserSSHAccess
